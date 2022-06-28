@@ -7,34 +7,42 @@
 
 }
 
-var input = document.querySelector('#noteInput');
-var text = document.querySelector('#textOfnote');
-var notes = document.querySelector('#notes');
+var input = document.getElementById('submit');
+console.log(input);
 
-input.addEventListener('submit', submitNewNote);
-notes.addEventListener('click', TickeNote);
+var tick = document.getElementById('checkBox');
+console.log(notes);
+
+
+input.addEventListener('click', submitNewNote);
+tick.addEventListener('click', TickeNote);
 
 
 
 
 
 function submitNewNote(e) {
-    var newNoteText = document.getElementById('noteInput').value;
-    var newNoteElement = document.createElement('li');
-    newNoteLiElement.className = 'list-group-item';
 
-    var newNoteTextElement = document.createElement('<s>' + newNoteText + '</s>'); 
+    const newNoteText = document.getElementById('noteInput').value;
+
+    /** @type {HTMLLIElement} */
+    var newNoteElement = document.createElement('li');
+
+    newNoteLiElement.classLi = 'list-group-item';
+
+
+    var newNoteTextElement = document.createElement('<s>' + newNoteText + '</s>');
     var checkBox = document.createElement('checkbox');
-    
-    newNoteElement.appendChild(newNoteTextElement); 
-    newNoteElement.appendChild(checkBox); 
-    
- ;
+
+    newNoteElement.appendChild(newNoteTextElement);
+    newNoteElement.appendChild(checkBox);
+
 
 
 
 }
 
 function TickeNote(e) {
+
 
 }

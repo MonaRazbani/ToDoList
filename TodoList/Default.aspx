@@ -11,10 +11,10 @@
     <div class="row  " style="padding: 70px">
         <div class="container flex-row justify-content-center">
 
-            <div class="input-group mb-3"  id=" noteInput">
-                <input type="text" class="form-control" placeholder="to do ... " aria-label="do to ... " aria-describedby="basic-addon2">
+            <div class="input-group mb-3" id ="inputForm">
+                <input type="text" class="form-control" placeholder="to do ... " aria-label="do to ... "   id="noteInput" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" id="submit" type="submit">add note </button>
+                    <button class="btn btn-primary" id="submit">add note </button>
                 </div>
             </div>
         </div>
