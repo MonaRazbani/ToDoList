@@ -3,7 +3,7 @@
 <asp:Content ContentPlaceHolderID="StyleContent" runat="server">
 
     <link href="#" rel="stylesheet" />
-       
+
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,26 +11,38 @@
     <div class="row  " style="padding: 70px">
         <div class="container flex-row justify-content-center">
 
-            <div class="input-group mb-3" id ="inputForm">
-                <input type="text" class="form-control" placeholder="to do ... " aria-label="do to ... "   id="noteInput" aria-describedby="basic-addon2">
+            <div class="input-group mb-3" id="inputForm">
+                <input type="text" class="form-control" placeholder="to do ... " aria-label="do to ... " id="noteInput" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-primary" id="submit">add note </button>
                 </div>
             </div>
         </div>
-        <div class="container flex-row justify-content-center" id="notes">
-            <ul class="list-group">
-                <li class="list-group-item ">doto
-                   <input type="checkbox" aria-label="Checkbox for following text input" id="checkBox">
-                <li class="list-group-item"><s>Dapibus ac facilisis in</s></li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+        <div class="container flex-row justify-content-center"">
+            <ul class="list-group"  id="notes" >
+                <li class="list-group-item">
+                    <label>
+                        todo 1
+                        <input type="checkbox" name="checkbox">
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label>
+                        todo 2
+                        <input type="checkbox" name="checkbox">
+                    </label>
+                </li>
+                <li class="list-group-item">
+                    <label>
+                        todo 3
+                        <input type="checkbox" name="checkbox">
+                    </label>
+                </li>
             </ul>
 
         </div>
     </div>
- 
+
 
 
 </asp:Content>
@@ -38,6 +50,6 @@
 
 <asp:Content ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
 
-       <script src="Scripts/toDoList.js"></script>
-    
+    <script src="Scripts/toDoList.js"></script>
+
 </asp:Content>

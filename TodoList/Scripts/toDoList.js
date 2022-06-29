@@ -7,42 +7,62 @@
 
 }
 
-var input = document.getElementById('submit');
-console.log(input);
+/** @type {HTMLInputElement} */
+const submit = document.getElementById('submit')
 
-var tick = document.getElementById('checkBox');
-console.log(notes);
+// get all checkboxes 
+const checkboxes = document.querySelectorAll('input[name="checkbox"]');
+for (checkbox of checkboxes) {
 
+checkbox.addEventListener('click', checkedNote);
 
-input.addEventListener('click', submitNewNote);
-tick.addEventListener('click', TickeNote);
+}
+console.log(checkboxes)
 
+//get input 
+const input = document.getElementById('noteInput');
+//get all note ; 
+const notesElement = document.getElementById('notes')
 
-
+//add event listener
+submit.addEventListener('click', submitNewNote);
+checkbox.addEventListener('click', checkedNote);
 
 
 function submitNewNote(e) {
 
-    const newNoteText = document.getElementById('noteInput').value;
-
+ 
     /** @type {HTMLLIElement} */
-    var newNoteElement = document.createElement('li');
+    const noteText = input.value;
 
-    newNoteLiElement.classLi = 'list-group-item';
+    //li
+    let liNoteElement = document.createElement('li');
+    liNoteElement.classList.add("list-group-item");
 
+    //label:
+    let labelNoteElement = document.createElement('label');
+    //checkbox 
+    let checkBoxNoteElement = document.createElement('input');
+    checkBoxNoteElement.type = 'checkbox';
+    
 
-    var newNoteTextElement = document.createElement('<s>' + newNoteText + '</s>');
-    var checkBox = document.createElement('checkbox');
+    labelNoteElement.textContent = noteText;
+    checkBoxNoteElement.addEventListener('click', checkedNote)
 
-    newNoteElement.appendChild(newNoteTextElement);
-    newNoteElement.appendChild(checkBox);
-
-
-
+    labelNoteElement.appendChild(checkBoxNoteElement)
+    liNoteElement.appendChild(labelNoteElement);
+    notesElement.appendChild(liNoteElement);
 
 }
 
-function TickeNote(e) {
+function checkedNote(e) {
 
+    let checked = e.target;
+    let liCheckedNote = checked.parentElement;
+    console.log(liCheckedNote)
+    const text = liCheckedNote.textContent;
+    liCheckedNote.innerHTML = '<s>' + text + '</s>';
+    
+    
 
 }
