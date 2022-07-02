@@ -59,7 +59,15 @@ function viewNote(notes) {
         //add event listener 
         checkboxNoteElement.addEventListener('click', checkedNote);
 
-        checkboxNoteElement.setAttribute('todoId', note.id)
+        checkboxNoteElement.setAttribute('todoid', note.id)
+
+        //delete Button 
+        const deleteElement = document.createElement('i');
+        deleteElement.className = 'bi bi-trash flex-row-reverse';
+        //add event listener 
+        deleteElement.addEventListener('click', deleteNote);
+
+        deleteElement.setAttribute('todoid', note.id)
 
         //note 
 
@@ -78,6 +86,7 @@ function viewNote(notes) {
         newNoteElement.textContent = note.title;
         labelNoteElement.appendChild(checkboxNoteElement);
         labelNoteElement.appendChild(newNoteElement);
+        labelNoteElement.appendChild(deleteElement);
         liNoteElement.appendChild(labelNoteElement);
         notesElement.appendChild(liNoteElement);
     }
@@ -122,11 +131,28 @@ function checkedNote(e) {
     //})
 
     // mutating logic
-    const currentTodoIndex = allNotes.findIndex(parseInt(checked.getAttribute('todoId')));
+    const currentTodoIndex = allNotes.findIndex(i => i.id === parseInt(checked.getAttribute('todoid')));
     allNotes[currentTodoIndex].completed = !allNotes[currentTodoIndex].completed;
+
 
     viewNote(allNotes)
 
 }
 
+function deleteNote(e) {
+
+    debugger
+    /** @type{HTMLElement}*/
+    const deleted = e.target;
+
+    const currentTodoIndex = allNotes.findIndex(i => i.id === parseInt(deleted.getAttribute('todoid')));
+    allNotes.splice(currentTodoIndex, currentTodoIndex + 1);
+
+    viewNote(allNotes);
+
+}
+
 viewNote(allNotes);
+
+
+
