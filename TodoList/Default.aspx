@@ -20,24 +20,12 @@
         </div>
         <div class="container flex-row justify-content-center"">
             <ul class="list-group"  id="notes" >
-                <li class="list-group-item">
+                <%--<li class="list-group-item">
                     <label>
                         todo 1
                         <input type="checkbox" name="checkbox">
                     </label>
-                </li>
-                <li class="list-group-item">
-                    <label>
-                        todo 2
-                        <input type="checkbox" name="checkbox">
-                    </label>
-                </li>
-                <li class="list-group-item">
-                    <label>
-                        todo 3
-                        <input type="checkbox" name="checkbox">
-                    </label>
-                </li>
+                </li>--%>
             </ul>
 
         </div>
