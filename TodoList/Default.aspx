@@ -18,16 +18,12 @@
 
     <div class="row  " style="padding: 70px">
         <div class="container flex-row justify-content-center">
-
-            <div class="input-group mb-3" id="inputForm">
-                <input type="text" class="form-control" placeholder="to do ... " aria-label="do to ... " id="noteInput" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" id="submit">add note </button>
-                </div>
-            </div>
+              <div class="input-group mb-3" id="inputForm">
+             
+           </div>`
         </div>
         <div class="container flex-row justify-content-center"">
-            <ul class="list-group"  id="notes" >
+            <ul class="list-group" id="notes" >
                 <li class="list-group-item">
                     <label>
                         todo 1
