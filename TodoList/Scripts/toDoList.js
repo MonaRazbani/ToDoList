@@ -288,16 +288,19 @@ function todoComponent(note, afterInit = undefined) {
 
     const textDecoration = note.completed ? "line-through" : "none";
 
+    const btnOpacity = 0.4;
+
     const checked = note.completed ? "checked" : "";
 
     const template =
-        `<li class="list-group-item" todoid="${note.id}">
+        `<li class="list-group-item list-group-item-action  list-group-item-light" todoid="${note.id}">
              <label>
                   <span name="title" style="text-decoration:${textDecoration}">
                     ${note.title}
                  </span>
                  <input type="checkbox" name="checkbox" ${checked}>
-                <i class="bi bi-trash" name="delete"></i>
+                <i class="bi bi-trash" name="delete" style="opacity:${btnOpacity}"></i>
+                <i class="bi bi-pencil" name="edit"  style="opacity:${btnOpacity}"></i>
              </label>
          </li>`
 
@@ -315,6 +318,8 @@ function todoComponent(note, afterInit = undefined) {
 
         btnDelete = root.querySelector('i[name="delete"]');
 
+        btnEdit = root.querySelector('i[name="edit"]');
+
         //check or uncheck
         checkbox.addEventListener('click', () => {
             /** @type{Note[]} */
@@ -323,7 +328,7 @@ function todoComponent(note, afterInit = undefined) {
             const currentTodoIndex = allNoteStrage.findIndex(i => i.id === note.id);
             allNoteStrage[currentTodoIndex].completed = !allNoteStrage[currentTodoIndex].completed;
 
-           // sessionStorage.removeItem("allNoteStrage");
+            // sessionStorage.removeItem("allNoteStrage");
             sessionStorage.setItem("allNoteStrage", JSON.stringify(allNoteStrage));
 
 
@@ -342,19 +347,51 @@ function todoComponent(note, afterInit = undefined) {
             let allNoteStrage = JSON.parse(sessionStorage.getItem("allNoteStrage"));
             allNoteStrage = allNoteStrage.filter(q => q.id !== note.id);
 
-           // sessionStorage.removeItem("allNoteStrage");
+            // sessionStorage.removeItem("allNoteStrage");
             sessionStorage.setItem("allNoteStrage", JSON.stringify(allNoteStrage));
 
             renderTodos();
 
         });
 
+        //edit 
+
+        btnEdit.addEventListener('click', () => {
+            /** @type{HTMLElement} */
+            const editBox = document.createElement('textarea');
+            editBox.className = "form-control";
+            editBox.setAttribute("row", 1);
+
+            const confirm = document.createElement('i');
+            confirm.className = "bi bi-check"
+            editBox.appendChild(confirm);
+
+            //confirm edition text 
+            confirm.addEventListener('click', () => {
+                let allNoteStrage = JSON.parse(sessionStorage.getItem("allNoteStrage"));
+
+                const currentTodoIndex = allNoteStrage.findIndex(i => i.id === note.id);
+                allNoteStrage[currentTodoIndex].title = editBox.value;
+
+                // sessionStorage.removeItem("allNoteStrage");
+                sessionStorage.setItem("allNoteStrage", JSON.stringify(allNoteStrage));
+
+            });
+            root.appendChild(checkbox); 
 
 
-        afterInit?.();
-    }
 
-    return [template, onAfterInit];
+
+
+
+        })
+
+
+
+    afterInit?.();
+}
+
+return [template, onAfterInit];
 
 }
 
